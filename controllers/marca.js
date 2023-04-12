@@ -55,8 +55,11 @@ const updateMarca = async ( req = request, res = response) => {
 //Listar todos
 
 const getMarcas = async (req = request,
-    res = response) => {
+    res = response,next) => {
     try{
+
+        if(req.query.estado) return next();
+
         const marcaDB = await Marca.find({})
         if(marcaDB.length == 0 )
         return res.json({msg: 'No hay datos'})

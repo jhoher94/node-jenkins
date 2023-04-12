@@ -150,7 +150,7 @@ const deleteInventario = async ( req = request, res = response) => {
         const inventarioDB = await Inventario.findById(id)
 
         if(inventarioDB){
-            const inventarioDBfound = await Marca.findByIdAndDelete(id)
+            const inventarioDBfound = await Inventario.findByIdAndDelete(id)
             return res.json({msg: 'El inventario fue eliminado con exito'})
         }
         if(!inventarioDB){

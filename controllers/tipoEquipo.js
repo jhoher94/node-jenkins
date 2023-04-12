@@ -7,6 +7,7 @@ const {request, response} = require('express')
 const createTipoEquipo = async (req = request,
     res = response) => {
     try{
+
         console.log(req.body)
         const nombre = req.body.nombre
         ? req.body.nombre.toUpperCase()
@@ -56,10 +57,9 @@ const updateTipoEquipo = async ( req = request, res = response) => {
 //Listar todos
 
 const getTipoEquipos = async (req = request,
-    res = response) => {
+    res = response,next) => {
     try{
-        //const { estado } = req.query;
-
+        if(req.query.estado) return next();
 
         const tipoEquiposDB = await TipoEquipo.find({})
         if(tipoEquiposDB.length == 0 )
@@ -71,6 +71,8 @@ const getTipoEquipos = async (req = request,
             msg: e
         })
     }
+
+
 }
 
 
