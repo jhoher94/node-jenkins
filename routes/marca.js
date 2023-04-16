@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { createMarca, getMarcas, getMarcaEstado, updateMarca, deleteMarca} = require('../controllers/Marca')
+const { createMarca, getMarcas, getMarcaEstado, updateMarca, deleteMarca} = require('../controllers/marca')
 
 
 const router = Router()
