@@ -65,8 +65,10 @@ const updateUsuario = async ( req = request, res = response) => {
 //Listar todos
 
 const getUsuarios = async (req = request,
-    res = response) => {
+    res = response, next) => {
     try{
+        if(req.query.estado) return next();
+
         const usuario = await Usuario.find({})
         if(usuario.length == 0 )
         return res.json({msg: 'No hay datos'})

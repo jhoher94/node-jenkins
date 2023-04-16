@@ -10,13 +10,16 @@ const createInventario= async (req = request,
     res = response) => {
     try{
         const data = req.body
-        console.log(data)
+        console.log("data", data)
         const { usuario, marca, estadoEquipo, tipoEquipo } = data;
         //validando usuario
         const usuarioDB = await Usuario.findOne({
             _id: usuario._id,
             estado: true
         })
+
+        console.log("usuario:", usuarioDB)
+
         if(!usuarioDB){
             return res.status(400).json({msg: 'usuario invalido'})
         }
@@ -28,22 +31,36 @@ const createInventario= async (req = request,
         if(!marcaDB){
             return res.status(400).json({msg: 'marca invalida'})
         }
+
+            
+        
+
         // validando estado de equipo
         const estadoEquipoDB = await EstadoEquipo.findOne({
             _id: estadoEquipo._id,
             estado: true
         })// select * from estados where _id=? and estado=true
+
         if(!estadoEquipoDB){
            return res.status(400).json({msg: 'estado invalido'})
         }
         // validando tipo equipo
+        
+        
+        console.log("estadoequipo: ", estadoEquipoDB)
+        
+        
         const tipoEquipoDB = await TipoEquipo.findOne({
             _id: tipoEquipo._id,
             estado: true
         })// select * from tipoequipos where _id=? and estado=true
         if(!tipoEquipoDB){
-           return res.status(400).json({msg: 'estado invalido'})
+           return res.status(400).json({msg: 'tipo invalido'})
         }      
+
+        
+        console.log("tipoequipo:",tipoEquipoDB)
+
         const inventario = new Inventario(data)
 
         await inventario.save()
@@ -95,38 +112,62 @@ const updateInventario = async ( req = request, res = response) => {
         const data = req.body
         const { usuario, marca, estadoEquipo, tipoEquipo} = data;
 
+         console.log ("data", data)
         //validando usuario
         const usuarioDB = await Usuario.findOne({
             _id: usuario._id,
             estado: true
         })
+
+        console.log ("Usuario: ", usuarioDB)
+
+
         if(!usuarioDB){
             return res.status(400).json({msg: 'usuario invalido'})
         }
+
+        
+
         // validando marca
         const marcaDB = await Marca.findOne({
             _id: marca._id,
             estado: true
         })
+
+        console.log ("marca: ", marcaDB)
+
         if(!marcaDB){
             return res.status(400).json({msg: 'marca invalida'})
         }
+
+        
+
         // validando estado de equipo
         const estadoEquipoDB = await EstadoEquipo.findOne({
             _id: estadoEquipo._id,
             estado: true
         })
+
+        console.log ("Estadoequipo",estadoEquipoDB)
+
         if(!estadoEquipoDB){
            return res.status(400).json({msg: 'estado invalido'})
         }
+
+        
+
         // validando tipo equipo
         const tipoEquipoDB = await TipoEquipo.findOne({
             _id: tipoEquipo._id,
             estado: true
         })
+
+        console.log ("tipo: ", tipoEquipoDB)
+
         if(!tipoEquipoDB){
            return res.status(400).json({msg: 'tipo de equipo invalido'})
-        }      
+        }
+        
 
         const inventarioDB = await Inventario.findByIdAndUpdate(id,data, {new: true})
 

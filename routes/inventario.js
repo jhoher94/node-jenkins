@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { createInventario, getInventarios, getInventarioEstado, updateInventario, deleteInventario} = require('../controllers/Inventario')
+const { createInventario, getInventarios, getInventarioEstado, updateInventario, deleteInventario} = require('../controllers/inventario')
 
 
 const router = Router()
