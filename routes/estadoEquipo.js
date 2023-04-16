@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { createEstadoEquipo, getEstadoEquipos, getEstadoEquipoEstado, updateEstadoEquipo, deleteEstadoEquipo} = require('../controllers/EstadoEquipo')
+const { createEstadoEquipo, getEstadoEquipos, getEstadoEquipoEstado, updateEstadoEquipo, deleteEstadoEquipo} = require('../controllers/estadoEquipo')
 
 
 const router = Router()
