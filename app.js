@@ -12,7 +12,7 @@ app.use(express.json())
 
 const tipoEquipo = require('./routes/tipoEquipo')
 const estadoEquipo = require('./routes/estadoEquipo')
-const usuario = require('./routes/usuario')
+const cliente = require('./routes/cliente')
 const marca = require('./routes/marca')
 const inventario = require('./routes/inventario')
 
@@ -20,7 +20,7 @@ const inventario = require('./routes/inventario')
 // URI o endpoint
 app.use('/api/tipoequipos', tipoEquipo)
 app.use('/api/estadoequipos', estadoEquipo)
-app.use('/api/usuarios', usuario)
+app.use('/api/clientes', cliente)
 app.use('/api/marcas', marca)
 app.use('/api/inventarios', inventario)
 

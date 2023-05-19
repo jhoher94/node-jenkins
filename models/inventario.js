@@ -25,9 +25,9 @@ const InventarioSchema = Schema({
     precio:{
         type: Number
     },
-    usuario:{
+    cliente:{
         type: Schema.Types.ObjectId,
-        ref: 'Usuario',
+        ref: 'Cliente',
         required: true
     },
     marca:{

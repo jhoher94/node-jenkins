@@ -1,9 +1,10 @@
 const Inventario = require('../models/inventario')
 const { request, response} = require('express')
-const Usuario = require('../models/usuario')
+const Cliente = require('../models/cliente')
 const Marca = require('../models/marca')
 const EstadoEquipo = require('../models/estadoEquipo')
 const TipoEquipo = require('../models/tipoEquipo')
+const cliente = require('../models/cliente')
 
 // crear
 const createInventario= async (req = request, 
@@ -11,17 +12,17 @@ const createInventario= async (req = request,
     try{
         const data = req.body
         console.log("data", data)
-        const { usuario, marca, estadoEquipo, tipoEquipo } = data;
-        //validando usuario
-        const usuarioDB = await Usuario.findOne({
-            _id: usuario._id,
+        const { cliente, marca, estadoEquipo, tipoEquipo } = data;
+        //validando cliente
+        const clienteDB = await Cliente.findOne({
+            _id: cliente._id,
             estado: true
         })
 
-        console.log("usuario:", usuarioDB)
+        console.log("cliente:", clienteDB)
 
-        if(!usuarioDB){
-            return res.status(400).json({msg: 'usuario invalido'})
+        if(!clienteDB){
+            return res.status(400).json({msg: 'cliente invalido'})
         }
         // validando marca
         const marcaDB = await Marca.findOne({
@@ -110,20 +111,20 @@ const updateInventario = async ( req = request, res = response) => {
     try{
         const { id } = req.query
         const data = req.body
-        const { usuario, marca, estadoEquipo, tipoEquipo} = data;
+        const { cliente, marca, estadoEquipo, tipoEquipo} = data;
 
          console.log ("data", data)
-        //validando usuario
-        const usuarioDB = await Usuario.findOne({
-            _id: usuario._id,
+        //validando cliente
+        const clienteDB = await Cliente.findOne({
+            _id: cliente._id,
             estado: true
         })
 
-        console.log ("Usuario: ", usuarioDB)
+        console.log ("cliente: ", clienteDB)
 
 
-        if(!usuarioDB){
-            return res.status(400).json({msg: 'usuario invalido'})
+        if(!clienteDB){
+            return res.status(400).json({msg: 'cliente invalido'})
         }
 
         

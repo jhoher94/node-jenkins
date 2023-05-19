@@ -64,15 +64,15 @@ const updateCliente = async ( req = request, res = response) => {
 
 //Listar todos
 
-const getUsuarios = async (req = request,
-    res = response, next) => {
+const getClientes = async (req = request,
+    res = response, /*next*/) => {
     try{
-        if(req.query.estado) return next();
+        // if(req.query.estado) return next();
 
-        const usuario = await Usuario.find({})
-        if(usuario.length == 0 )
+        const cliente = await Cliente.find({})
+        if(cliente.length == 0 )
         return res.json({msg: 'No hay datos'})
-        return res.json({usuario})
+        return res.json({cliente})
     }catch(e){
         return res.status(500).json({
             msg: e
@@ -83,46 +83,46 @@ const getUsuarios = async (req = request,
 
 //Buscar estadoquipo por estado:
 
-const getUsuarioEstado = async (req = request, res = response) => {
-    try{
-        const { estado } = req.query;
+// const getUsuarioEstado = async (req = request, res = response) => {
+//     try{
+//         const { estado } = req.query;
 
 
-        const usuario = await Usuario.find({estado})
+//         const usuario = await Usuario.find({estado})
 
-        if(!usuario) return res.json({msg: 'No hay datos'})
-        return res.json(usuario)
-    }catch(e){
-        return res.status(500).json({
-            msg: e
-        })
-    }
-}
+//         if(!usuario) return res.json({msg: 'No hay datos'})
+//         return res.json(usuario)
+//     }catch(e){
+//         return res.status(500).json({
+//             msg: e
+//         })
+//     }
+// }
 
-//Eliminar usuarios
+//Eliminar clientes
 
-const deleteUsuario = async ( req = request, res = response) => {
-    try{
-        const { id } = req.query
+// const deleteUsuario = async ( req = request, res = response) => {
+//     try{
+//         const { id } = req.query
 
-        const usuario = await Usuario.findById(id)
+//         const usuario = await Usuario.findById(id)
 
-        if(usuario){
-            const usuarioDBfound = await Usuario.findByIdAndDelete(id)
-            return res.json({msg: 'El usuario fue eliminado con exito'})
-        }
-        if(!usuario){
-            return res.json({msg: 'No existe ese id'})
-        } 
+//         if(usuario){
+//             const usuarioDBfound = await Usuario.findByIdAndDelete(id)
+//             return res.json({msg: 'El usuario fue eliminado con exito'})
+//         }
+//         if(!usuario){
+//             return res.json({msg: 'No existe ese id'})
+//         } 
         
 
-    }catch(e){
-        return res.status(500).json({
-            msg: e
-        })
-    }
-}
+//     }catch(e){
+//         return res.status(500).json({
+//             msg: e
+//         })
+//     }
+// }
 
 
 
-module.exports = {createUsuario, getUsuarios, getUsuarioEstado, updateUsuario, deleteUsuario}
+module.exports = {createCliente, getClientes, /*getUsuarioEstado*/ updateCliente, /*deleteUsuario*/}
