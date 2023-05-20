@@ -11,7 +11,7 @@ const UniversidadSchema = Schema({
         required: [true, 'Direccion requerida'],
     },
     telefono: {
-        type: int ,
+        type: String,
         required: [true, 'Telefono requerido'],
     },
     fechaCreacion:{
