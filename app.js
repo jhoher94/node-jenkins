@@ -18,7 +18,7 @@ const universidad = require('./models/universidad')
 
 
 // URI o endpoint
-app.use('/api/tipoequipos', tipoEquipo)
+app.use('/api/tipoequipos', etapa)
 app.use('/api/tipoproyectos', tipoProyecto)
 app.use('/api/clientes', cliente)
 app.use('/api/universidades', universidad)

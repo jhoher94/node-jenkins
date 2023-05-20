@@ -13,8 +13,6 @@ const createCliente = async (req = request,
         : ''
 
         const email = req.body.email
-        ? req.body.email.toUpperCase()
-        : ''
 
         const clienteBD = await Cliente.findOne({nombre})
         if(clienteBD){
