@@ -20,7 +20,7 @@ const createEtapa = async (req = request,
             nombre
         }
         const etapa = new Etapa(data)
-        //console.log(tipoEquipo)
+        //console.log(etapa)
         await etapa.save()
         return res.status(201).json(etapa)
     }catch(e){
@@ -33,7 +33,7 @@ const createEtapa = async (req = request,
 }
 
 
-//Edición de tipoequipo
+//Edición de etapa
 
 const updateEtapa = async ( req = request, res = response) => {
     try{
@@ -64,7 +64,7 @@ const getEtapas = async (req = request,
         const etapasBD = await Etapa.find({})
         if(etapasBD.length == 0 )
         return res.json({msg: 'No hay datos'})
-        //select * from tipoequipo where estado = ?;
+        //select * from etapa where estado = ?;
         return res.json({etapasBD})
     }catch(e){
         return res.status(500).json({
@@ -122,4 +122,4 @@ const deleteTipoEquipo = async ( req = request, res = response) => {
 
 
 
-module.exports = {createEtapa, getEtapas,updateEtapa /* getTipoEquipoEstado, , deleteTipoEquipo */ }
+module.exports = {createEtapa, getEtapas, updateEtapa /* getTipoEquipoEstado, , deleteTipoEquipo */ }
