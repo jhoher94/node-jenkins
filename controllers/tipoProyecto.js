@@ -55,15 +55,15 @@ const updateTipoProyecto = async ( req = request, res = response) => {
 
 //Listar todos
 
-const getTipoProyecto = async (req = request,
+const getTipoProyectos = async (req = request,
     res = response,next) => {
     try{
         if(req.query.estado) return next();
 
-        const tipoProyectoBD = await TipoProyecto.find({})
-        if(tipoProyectoBD.length == 0 )
+        const tipoProyectosBD = await TipoProyecto.find({})
+        if(tipoProyectosBD.length == 0 )
         return res.json({msg: 'No hay datos'})
-        return res.json({tipoProyectoBD})
+        return res.json({tipoProyectosBD})
     }catch(e){
         return res.status(500).json({
             msg: e
@@ -118,4 +118,4 @@ const deleteEstadoEquipo = async ( req = request, res = response) => {
 
 
 
-module.exports = {createTipoProyecto, getTipoProyecto, updateTipoProyecto, /*deleteEstadoEquipo, getEstadoEquipoEstado*/}
+module.exports = {createTipoProyecto, getTipoProyectos, updateTipoProyecto, /*deleteEstadoEquipo, getEstadoEquipoEstado*/}

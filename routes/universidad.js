@@ -1,5 +1,6 @@
 const { Router } = require('express')
-const { createUniversidad, getUniversidad,updateUniversidad /* getMarcaEstado, , deleteMarca */ } = require('../controllers/universidad')
+const { createUniversidad, getUniversidad,updateUniversidad, /* getMarcaEstado, , deleteMarca */ 
+getUniversidades} = require('../controllers/universidad')
 
 
 const router = Router()
@@ -12,7 +13,7 @@ router.post('/', createUniversidad)
 router.put('/', updateUniversidad)
 
 // listar
-router.get('/', getUniversidad)
+router.get('/', getUniversidades)
 
 /*   //Listar por estado
 router.get('/', getMarcaEstado)

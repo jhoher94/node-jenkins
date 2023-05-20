@@ -69,10 +69,10 @@ const getClientes = async (req = request,
     try{
         // if(req.query.estado) return next();
 
-        const cliente = await Cliente.find({})
-        if(cliente.length == 0 )
+        const clientesDB = await Cliente.find({})
+        if(clientesDB.length == 0 )
         return res.json({msg: 'No hay datos'})
-        return res.json({cliente})
+        return res.json({clientesDB})
     }catch(e){
         return res.status(500).json({
             msg: e

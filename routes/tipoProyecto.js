@@ -1,5 +1,6 @@
 const { Router } = require('express')
-const { createTipoProyecto, getTipoProyecto, updateTipoProyecto /* getEstadoEquipoEstado, , deleteEstadoEquipo */ } = require('../controllers/tipoProyecto')
+const { createTipoProyecto, getTipoProyecto, updateTipoProyecto, /* getEstadoEquipoEstado, , deleteEstadoEquipo */ 
+getTipoProyectos} = require('../controllers/tipoProyecto')
 
 
 const router = Router()
@@ -12,7 +13,7 @@ router.post('/', createTipoProyecto)
 router.put('/', updateTipoProyecto)
 
 // listar
-router.get('/', getTipoProyecto)
+router.get('/', getTipoProyectos)
 
 /*  //Listar por estado
 router.get('/', getEstadoEquipoEstado)

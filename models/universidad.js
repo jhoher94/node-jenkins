@@ -25,4 +25,4 @@ const UniversidadSchema = Schema({
 })
 
 
-module.exports = model('Marca', MarcaSchema)
+module.exports = model('Universidad', UniversidadSchema)

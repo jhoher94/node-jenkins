@@ -10,10 +10,9 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 
-const tipoEquipo = require('./routes/tipoEquipo')
+const etapa = require('./routes/etapa')
 const tipoProyecto = require('./routes/tipoProyecto')
 const cliente = require('./routes/cliente')
-const marca = require('./routes/universidad')
 const inventario = require('./routes/inventario')
 const universidad = require('./models/universidad')
 

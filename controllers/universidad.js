@@ -62,16 +62,16 @@ const updateUniversidad = async ( req = request, res = response) => {
 
 //Listar todos
 
-const getUniversidad = async (req = request,
+const getUniversidades = async (req = request,
     res = response,next) => {
     try{
 
         if(req.query.estado) return next();
 
-        const universidadBD = await Universidad.find({})
-        if(universidadBD.length == 0 )
+        const universidadesBD = await Universidad.find({})
+        if(universidadesBD.length == 0 )
         return res.json({msg: 'No hay datos'})
-        return res.json({universidadBD})
+        return res.json({universidadesBD})
 
     }catch(e){
         return res.status(500).json({
@@ -123,7 +123,7 @@ const deleteMarca = async ( req = request, res = response) => {
     }
 }  */
 
-module.exports = {createUniversidad,getUniversidad,updateUniversidad /* getMarcaEstado, , deleteMarca */ }
+module.exports = {createUniversidad,getUniversidades,updateUniversidad /* getMarcaEstado, , deleteMarca */ }
 
 
 

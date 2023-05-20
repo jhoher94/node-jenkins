@@ -1,14 +1,10 @@
 const { Schema, model } = require('mongoose')
 
 
-const TipoEquipoSchema = Schema({
+const EtapaSchema = Schema({
     nombre: {
         type: String,
         required: [true, 'Nombre requerido'],
-    },
-    estado: {
-        type: Boolean,
-        default: true
     },
     fechaCreacion:{
         type: Date,
