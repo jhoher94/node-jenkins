@@ -1,27 +1,27 @@
-const EstadoEquipo = require('../models/estadoEquipo')
+const TipoProyecto = require('../models/tipoProyecto')
 const {request, response} = require('express')
 
 
 //Creación
 
-const createEstadoEquipo = async (req = request,
+const createTipoProyecto = async (req = request,
     res = response) => {
     try{
         console.log(req.body)
         const nombre = req.body.nombre
         ? req.body.nombre.toUpperCase()
         : ''
-        const estadoEquipoBD = await EstadoEquipo.findOne({nombre})
-        if(estadoEquipoBD){
+        const tipoProyectoBD = await TipoProyecto.findOne({nombre})
+        if(tipoProyectoBD){
             return res.status(400).json({msg: 'Ya existe'})
         }
         const data = {
             nombre
         }
-        const estadoEquipo = new EstadoEquipo(data)
+        const tipoProyecto = new TipoProyecto(data)
         //console.log(EstadoEquipo)
-        await estadoEquipo.save()
-        return res.status(201).json(estadoEquipo)
+        await tipoProyecto.save()
+        return res.status(201).json(tipoProyecto)
     }catch(e){
         return res.status(500).json({
             msg: e
@@ -34,17 +34,17 @@ const createEstadoEquipo = async (req = request,
 
 //Edición de estadoequipo
 
-const updateEstadoEquipo = async ( req = request, res = response) => {
+const updateTipoProyecto = async ( req = request, res = response) => {
     try{
         const { id } = req.query
         const data = req.body
         data.fechaActualizacion = new Date()
 
-        const estadoEquiposDB = await EstadoEquipo.findByIdAndUpdate(id,data, {new: true})
+        const tipoProyectoBD = await TipoProyecto.findByIdAndUpdate(id,data, {new: true})
 
-        if(!estadoEquiposDB) return res.json({msg: 'No hay datos'})
+        if(!tipoProyectoBD) return res.json({msg: 'No hay datos'})
         
-        return res.json({estadoEquiposDB})
+        return res.json({tipoProyectoBD})
 
     }catch(e){
         return res.status(500).json({
@@ -55,15 +55,15 @@ const updateEstadoEquipo = async ( req = request, res = response) => {
 
 //Listar todos
 
-const getEstadoEquipos = async (req = request,
+const getTipoProyecto = async (req = request,
     res = response,next) => {
     try{
         if(req.query.estado) return next();
 
-        const estadoEquiposDB = await EstadoEquipo.find({})
-        if(estadoEquiposDB.length == 0 )
+        const tipoProyectoBD = await TipoProyecto.find({})
+        if(tipoProyectoBD.length == 0 )
         return res.json({msg: 'No hay datos'})
-        return res.json({estadoEquiposDB})
+        return res.json({tipoProyectoBD})
     }catch(e){
         return res.status(500).json({
             msg: e
@@ -74,7 +74,7 @@ const getEstadoEquipos = async (req = request,
 
 //Buscar estadoquipo por estado:
 
-const getEstadoEquipoEstado = async (req = request, res = response) => {
+/* const getEstadoEquipoEstado = async (req = request, res = response) => {
     try{
         const { estado } = req.query;
 
@@ -112,10 +112,10 @@ const deleteEstadoEquipo = async ( req = request, res = response) => {
             msg: e
         })
     }
-}
+} */
 
 
 
 
 
-module.exports = {createEstadoEquipo, getEstadoEquipos, getEstadoEquipoEstado, updateEstadoEquipo, deleteEstadoEquipo}
+module.exports = {createTipoProyecto, getTipoProyecto, updateTipoProyecto, /*deleteEstadoEquipo, getEstadoEquipoEstado*/}

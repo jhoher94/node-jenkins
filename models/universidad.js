@@ -1,14 +1,18 @@
 const { Schema, model } = require('mongoose')
 
 
-const MarcaSchema = Schema({
+const UniversidadSchema = Schema({
     nombre: {
         type: String,
         required: [true, 'Nombre requerido'],
     },
-    estado: {
-        type: Boolean,
-        default: true
+    direccion: {
+        type: String,
+        required: [true, 'Direccion requerida'],
+    },
+    telefono: {
+        type: int ,
+        required: [true, 'Telefono requerido'],
     },
     fechaCreacion:{
         type: Date,

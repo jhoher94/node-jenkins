@@ -1,7 +1,7 @@
 const Inventario = require('../models/inventario')
 const { request, response} = require('express')
 const Cliente = require('../models/cliente')
-const Marca = require('../models/marca')
+const Marca = require('../models/universidad')
 const EstadoEquipo = require('../models/estadoEquipo')
 const TipoEquipo = require('../models/tipoEquipo')
 const cliente = require('../models/cliente')

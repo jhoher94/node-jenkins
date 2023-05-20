@@ -1,26 +1,34 @@
-const Marca = require('../models/marca')
+const Universidad = require('../models/universidad')
 const {request, response} = require('express')
 
 
 //Creación
 
-const createMarca = async (req = request,
+const createUniversidad = async (req = request,
     res = response) => {
     try{
         console.log(req.body)
         const nombre = req.body.nombre
+        const direccion = req.body.direccion
+        const telefono = req.body.telefono
         ? req.body.nombre.toUpperCase()
         : ''
-        const marcaBD = await Marca.findOne({nombre})
-        if(marcaBD){
+        ? req.body.direccion.toUpperCase()
+        : ''
+        ? req.body.telefono.toUpperCase()
+        : ''
+        const universidadBD = await Universidad.findOne({nombre})
+        if(universidadBD){
             return res.status(400).json({msg: 'Ya existe'})
         }
         const data = {
-            nombre
+            nombre,
+            direccion,
+            telefono
         }
-        const marca = new Marca(data)
-        await marca.save()
-        return res.status(201).json(marca)
+        const universidad = new Universidad(data)
+        await universidad.save()
+        return res.status(201).json(universidad)
     }catch(e){
         return res.status(500).json({
             msg: e
@@ -31,19 +39,19 @@ const createMarca = async (req = request,
 }
 
 
-//Edición de marca
+//Edición de universidad
 
-const updateMarca = async ( req = request, res = response) => {
+const updateUniversidad = async ( req = request, res = response) => {
     try{
         const { id } = req.query
         const data = req.body
         data.fechaActualizacion = new Date()
 
-        const marcaDB = await Marca.findByIdAndUpdate(id,data, {new: true})
+        const universidadBD = await Universidad.findByIdAndUpdate(id,data, {new: true})
 
-        if(!marcaDB) return res.json({msg: 'No hay datos'})
+        if(!universidadBD) return res.json({msg: 'No hay datos'})
         
-        return res.json({marcaDB})
+        return res.json({universidadBD})
 
     }catch(e){
         return res.status(500).json({
@@ -54,16 +62,16 @@ const updateMarca = async ( req = request, res = response) => {
 
 //Listar todos
 
-const getMarcas = async (req = request,
+const getUniversidad = async (req = request,
     res = response,next) => {
     try{
 
         if(req.query.estado) return next();
 
-        const marcaDB = await Marca.find({})
-        if(marcaDB.length == 0 )
+        const universidadBD = await Universidad.find({})
+        if(universidadBD.length == 0 )
         return res.json({msg: 'No hay datos'})
-        return res.json({marcaDB})
+        return res.json({universidadBD})
 
     }catch(e){
         return res.status(500).json({
@@ -75,7 +83,7 @@ const getMarcas = async (req = request,
 
 //Buscar marca por estado:
 
-const getMarcaEstado = async (req = request, res = response) => {
+/*   const getMarcaEstado = async (req = request, res = response) => {
     try{
         const { estado } = req.query;
 
@@ -113,9 +121,9 @@ const deleteMarca = async ( req = request, res = response) => {
             msg: e
         })
     }
-}
+}  */
 
-module.exports = {createMarca,getMarcas, getMarcaEstado, updateMarca, deleteMarca}
+module.exports = {createUniversidad,getUniversidad,updateUniversidad /* getMarcaEstado, , deleteMarca */ }
 
 
 
