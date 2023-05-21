@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  desacople-api-proyecto:
+    container_name: desacople-api-proyecto
+    image: desacople-api-proyecto:v1
+    build: 
+      context: .
+    ports:
+      - "4001:4001"
+    networks:
+      - api-red 
+networks:
+  api-red:
