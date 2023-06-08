@@ -21,8 +21,7 @@ services:
   balanceador-carga:
     container_name: balanceador-carga
     image: balanceador-carga:v1
-    build: 
-      context: ./balanceador
+    build: ./balanceador
     ports:
       - "4004:80"
     networks:
