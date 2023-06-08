@@ -12,8 +12,6 @@ services:
   desacople-api-proyecto-2:
     container_name: desacople-api-proyecto-2
     image: desacople-api-proyecto:v1
-    build: 
-      context: .
     ports:
       - "4001"
     networks:
