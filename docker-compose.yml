@@ -9,6 +9,7 @@ services:
       - "4001"
     networks:
       - api-red 
+    
   desacople-api-proyecto-2:
     container_name: desacople-api-proyecto-2
     image: desacople-api-proyecto:v1
@@ -16,13 +17,16 @@ services:
       - "4001"
     networks:
       - api-red 
+
   balanceador-carga:
     container_name: balanceador-carga
     image: balanceador-carga:v1
-    build: ./balanceador
+    build: 
+      context: ./balanceador
     ports:
       - "4004:80"
     networks:
       - api-red 
+
 networks:
   api-red:
