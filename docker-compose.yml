@@ -7,14 +7,9 @@ services:
       context: .
     ports:
       - "4001"
-    networks:
-      - api-red 
-    
-  desacople-api-proyecto-2:
-    container_name: desacople-api-proyecto-2
-    image: desacople-api-proyecto:v1
-    ports:
-      - "4001"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - PORT=4002
     networks:
       - api-red 
 
