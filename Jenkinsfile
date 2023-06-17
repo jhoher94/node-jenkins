@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     withcredentials([
-                        string( credentialsId: 'MONGO_URI', variable: 'MONGO_URI')
+                        string( credentialsId:'MONGO_URI', variable:'MONGO_URI')
                     ]) {
                         docker.build('desacople-api-proyecto:v1', '--build-arg MONGO_URI=${MONGO_URI} .')
                     }
