@@ -28,6 +28,7 @@ pipeline {
                             docker-compose -f docker-compose-update.yml up -d
                         """
                     }
+                }    
              }
         }
     }
