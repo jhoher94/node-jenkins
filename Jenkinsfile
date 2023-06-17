@@ -9,12 +9,13 @@ pipeline {
         }
         stage('Construir imagen de Docker'){
             steps {
-                withcredentials([
-                    string(credentialsId: 'MONGO_URI', variable: 'MONGO_URI')
-                ]) {
-                    docker.build('desacople-api-proyecto:v1', '--build-arg MONGO_URI=${MONGO_URI} .')
+                script {
+                    withcredentials([
+                        string(credentialsId: 'MONGO_URI', variable: 'MONGO_URI')
+                    ]) {
+                        docker.build('desacople-api-proyecto:v1', '--build-arg MONGO_URI=${MONGO_URI} .')
+                    }
                 }
-                
             }
         }
         stage('Desplegar contenedores Docker'){
