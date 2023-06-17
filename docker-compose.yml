@@ -2,26 +2,25 @@ version: "3.7"
 services:
   desacople-api-proyecto:
     container_name: desacople-api-proyecto
-    image: desacople-api-proyecto:v1
+    image: desacople-api-proyecto:latest
     build: 
       context: .
     ports:
       - "4001"
     environment:
       - MONGO_URI=${MONGO_URI}
-      - PORT=4002
+      - PORT=4001
     networks:
       - api-red 
 
   balanceador-carga:
     container_name: balanceador-carga
-    image: balanceador-carga:v1
+    image: balanceador-carga:latest
     build: 
       context: ./balanceador
     ports:
       - "4004:80"
     networks:
       - api-red 
-
 networks:
   api-red:
