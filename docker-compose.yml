@@ -2,7 +2,7 @@ version: "3.7"
 services:
   desacople-api-proyecto:
     container_name: desacople-api-proyecto
-    image: desacople-api-proyecto:latest
+    image: desacople-api-proyecto:v1
     build: 
       context: .
     ports:
@@ -15,7 +15,7 @@ services:
 
   balanceador-carga:
     container_name: balanceador-carga
-    image: balanceador-carga:latest
+    image: balanceador-carga:v1
     build: 
       context: ./balanceador
     ports:
